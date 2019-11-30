@@ -16,3 +16,13 @@ export const setLocalStorage = (key, value) => {
 
   window.localStorage.setItem(key, valueString);
 };
+
+export const expenseCompare = (a, b) => {
+  return new Date(a.date) > new Date(b.date) ? -1 : 1;
+};
+
+export const getLocaleDate = date => {
+  let localeDate = new Date(date);
+
+  return localeDate.toLocaleDateString("sr-SR");
+};

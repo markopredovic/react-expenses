@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
+import "./styles/styles.scss"
+
 import ExpensesContext from './context/ExpensesContext'
 import useExpenses from './hooks/useExpenses'
 import Header from './components/Header'
@@ -10,11 +12,13 @@ import AddExpenseForm from './components/AddExpenseForm'
 function App() {
 
   const localStarageKey = 'react_expenses'
-  const {state, add, filter } = useExpenses(localStarageKey)
+  const {state, filteredList, total, add, filter,remove, changeLang } = useExpenses(localStarageKey)
 
   return (
-    <div className="App">
-      <ExpensesContext.Provider value={{ state, add, filter }}>
+    <div className="l-app">
+      <ExpensesContext.Provider
+        value={{ state, filteredList, total, add, filter, remove, changeLang }}
+      >
         <Router>
           <Header />
           <Switch>
