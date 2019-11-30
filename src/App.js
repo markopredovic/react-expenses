@@ -8,16 +8,16 @@ import useExpenses from './hooks/useExpenses'
 import Header from './components/Header'
 import ExpensesList from './components/ExpensesList'
 import AddExpenseForm from './components/AddExpenseForm'
+import * as api from './api/expenses'
 
 function App() {
 
-  const localStarageKey = 'react_expenses'
-  const {state, filteredList, total, add, filter,remove, changeLang } = useExpenses(localStarageKey)
+  const {state, add, remove, filter, changeLang } = useExpenses(api)
 
   return (
     <div className="l-app">
       <ExpensesContext.Provider
-        value={{ state, filteredList, total, add, filter, remove, changeLang }}
+        value={{ state, add, remove, filter, changeLang }}
       >
         <Router>
           <Header />

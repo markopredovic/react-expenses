@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import ExpensesContext from "../../context/ExpensesContext";
 import LocalizedStrings from "react-localization";
 
@@ -13,7 +13,7 @@ const FilterExpenses = () => {
       submit: "submit"
     },
     sr: {
-      selectDate: "Izaberi datum",
+      selectDate: "Filtriraj troskove po datumu:",
       month: "mesec",
       year: "godina",
       all: "Sve",
@@ -24,34 +24,20 @@ const FilterExpenses = () => {
 
   const context = useContext(ExpensesContext);
 
-  const [selectDisabled, setSelectDisabled] = useState(true);
-
   const selectMonthRef = useRef(null);
   const selectYearRef = useRef(null);
 
   if (context.state) {
     strings.setLanguage(context.state.lang);
-    console.log("[CURRENT LANG]", strings.getLanguage());
   }
 
   useEffect(() => {
-    console.log("[USE EFFECT filter]");
     selectMonthRef.current.value = context.state ? context.state.month : -1;
     selectYearRef.current.value = context.state ? context.state.year : -1;
   }, [context.state]);
 
-  const _setDisabled = () => {
-    parseInt(selectMonthRef.current.value) !== -1
-      ? setSelectDisabled(false)
-      : setSelectDisabled(true);
-  };
-
   const onChangeMonth = e => {
-    _setDisabled();
 
-    if (selectMonthRef.current.value !== "-1") {
-      selectYearRef.current.value = new Date().getFullYear();
-    }
   };
 
   const onChangeYear = e => {
@@ -65,10 +51,17 @@ const FilterExpenses = () => {
   const onSubmitHandler = e => {
     e.preventDefault();
 
-    context.filter({
-      month: parseInt(selectMonthRef.current.value),
-      year: parseInt(selectYearRef.current.value)
-    });
+    const shouldDoFilter =
+      selectMonthRef.current.value !== -1 || selectYearRef.current.value !== -1;
+
+    if (shouldDoFilter) {
+      context.filter({
+        month: parseInt(selectMonthRef.current.value),
+        year: parseInt(selectYearRef.current.value)
+      });
+    }
+
+
   };
 
   return (
@@ -102,9 +95,8 @@ const FilterExpenses = () => {
             name="expenses-year"
             onChange={onChangeYear}
             ref={selectYearRef}
-            disabled={selectDisabled}
           >
-            <option value="-1">All</option>
+<option value="-1">{strings.all}</option>
             <option value="2019">2019</option>
             <option value="2020">2020</option>
           </select>

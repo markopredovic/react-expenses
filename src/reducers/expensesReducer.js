@@ -49,7 +49,6 @@ const filterExpenses = (state, payload) => {
 
   return {
     ...state,
-    expenses: payload.updatedExpenses,
     month: payload.filter.month,
     year: payload.filter.year
   };
@@ -72,3 +71,9 @@ export const getTotal = state => {
     .filter(expense => new Date(expense.date).getMonth() === state.month)
     .reduce((acc, expense) => acc + expense.price, 0) : -1;
 };
+
+export const getFilteredList = state => {
+  let list = []
+
+  return list
+}
