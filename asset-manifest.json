@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/react-expenses/static/css/main.c2f48785.chunk.css",
+    "main.js": "/react-expenses/static/js/main.6cd32efe.chunk.js",
+    "main.js.map": "/react-expenses/static/js/main.6cd32efe.chunk.js.map",
+    "runtime-main.js": "/react-expenses/static/js/runtime-main.465765a2.js",
+    "runtime-main.js.map": "/react-expenses/static/js/runtime-main.465765a2.js.map",
+    "static/css/2.b90ce945.chunk.css": "/react-expenses/static/css/2.b90ce945.chunk.css",
+    "static/js/2.9ef0b40f.chunk.js": "/react-expenses/static/js/2.9ef0b40f.chunk.js",
+    "static/js/2.9ef0b40f.chunk.js.map": "/react-expenses/static/js/2.9ef0b40f.chunk.js.map",
+    "index.html": "/react-expenses/index.html",
+    "precache-manifest.17f593d66c5003a711bb50c71b63a923.js": "/react-expenses/precache-manifest.17f593d66c5003a711bb50c71b63a923.js",
+    "service-worker.js": "/react-expenses/service-worker.js",
+    "static/css/2.b90ce945.chunk.css.map": "/react-expenses/static/css/2.b90ce945.chunk.css.map",
+    "static/css/main.c2f48785.chunk.css.map": "/react-expenses/static/css/main.c2f48785.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.465765a2.js",
+    "static/css/2.b90ce945.chunk.css",
+    "static/js/2.9ef0b40f.chunk.js",
+    "static/css/main.c2f48785.chunk.css",
+    "static/js/main.6cd32efe.chunk.js"
+  ]
+}
