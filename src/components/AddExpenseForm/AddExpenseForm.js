@@ -4,22 +4,22 @@ import "react-datepicker/dist/react-datepicker.css";
 import ExpenseContext from "../../context/ExpensesContext";
 import LocalizedStrings from "react-localization";
 import { registerLocale } from "react-datepicker";
-import sr from "date-fns/locale/sr";
-registerLocale("sr", sr);
+import rs from "date-fns/locale/sr";
+registerLocale("rs", rs);
 
 const AddExpenseForm = () => {
   let strings = new LocalizedStrings({
     en: {
       addExpenseName: "add expense name",
       addExpenseValue: "add expense value",
-      submit: "submit",
+      submit: "add",
       emptyName: "empty expense name",
       emptyPrice: "empty expense value"
     },
-    sr: {
+    rs: {
       addExpenseName: "unesi naziv utroska",
       addExpenseValue: "unesi potrosenu vrednost",
-      submit: "potvrdi",
+      submit: "dodaj",
       emptyName: "prazno ime utroska",
       emptyPrice: "prazna vrednost utroska"
     }
@@ -33,6 +33,8 @@ const AddExpenseForm = () => {
     strings.setLanguage(context.state.lang);
     console.log("[CURRENT LANG]", strings.getLanguage());
   }
+
+  const currentLang = strings.getLanguage();
 
   const expenseInputPriceRef = useRef(null);
   const expenseInputNameRef = useRef(null);
@@ -72,7 +74,7 @@ const AddExpenseForm = () => {
     if (expenseInputPriceRef.current.value === "")
       errors.emptyPrice = strings.emptyPrice;
 
-    setErrors(errors)
+    setErrors(errors);
 
     return errors;
   };
@@ -82,31 +84,37 @@ const AddExpenseForm = () => {
   };
 
   return (
-    <div className="l-add-expense-form">
-      <form onSubmit={onSubmitHandler}>
-        <div className="l-fields">
-          <input
-            type="text"
-            name="expense"
-            ref={expenseInputNameRef}
-            placeholder={strings.addExpenseName}
-          />
-          {errors && errors.emptyName}
-          <input
-            type="text"
-            name="expense"
-            ref={expenseInputPriceRef}
-            placeholder={strings.addExpenseValue}
-          />
-          {errors && errors.emptyPrice}
-        </div>
-        <div className="l-field">
-          <DatePicker locale="sr" selected={date} onChange={handleChange} />
-        </div>
+    <main>
+      <div className="l-add-expense-form">
+        <form onSubmit={onSubmitHandler}>
+          <div className="l-fields">
+            <input
+              type="text"
+              name="expense"
+              ref={expenseInputNameRef}
+              placeholder={strings.addExpenseName}
+            />
+            {errors && errors.emptyName}
+            <input
+              type="text"
+              name="expense"
+              ref={expenseInputPriceRef}
+              placeholder={strings.addExpenseValue}
+            />
+            {errors && errors.emptyPrice}
+          </div>
+          <div className="l-field">
+            <DatePicker
+              locale={currentLang === "en" ? "en" : "rs"}
+              selected={date}
+              onChange={handleChange}
+            />
+          </div>
 
-        <button type="submit">{strings.submit}</button>
-      </form>
-    </div>
+          <button type="submit">{strings.submit}</button>
+        </form>
+      </div>
+    </main>
   );
 };
 

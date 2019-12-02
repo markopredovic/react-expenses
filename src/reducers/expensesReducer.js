@@ -1,10 +1,16 @@
-import { LIST_ALL_EXPENSES, ADD_EXPENSE, FILTER_EXPENSES, REMOVE_EXPENSE, CHANGE_LANG } from "../types";
+import {
+  LIST_ALL_EXPENSES,
+  ADD_EXPENSE,
+  FILTER_EXPENSES,
+  REMOVE_EXPENSE,
+  CHANGE_LANG
+} from "../types";
 
 const initialState = {
   expenses: [],
   month: -1,
   year: new Date().getFullYear(),
-  lang: 'sr'
+  lang: "rs"
 };
 
 const expensesReducer = (state = initialState, action) => {
@@ -16,14 +22,13 @@ const expensesReducer = (state = initialState, action) => {
     case FILTER_EXPENSES:
       return filterExpenses(state, action.payload);
     case REMOVE_EXPENSE:
-        return removeExpense(state, action.payload)
+      return removeExpense(state, action.payload);
     case CHANGE_LANG:
       return {
         ...state,
         lang: action.payload
-      }
+      };
     default:
-      console.log(state);
       return state;
   }
 };
@@ -45,8 +50,6 @@ const addExpense = (state, expense) => {
 };
 
 const filterExpenses = (state, payload) => {
-  console.log('[FILTER]', payload)
-
   return {
     ...state,
     month: payload.filter.month,
@@ -55,25 +58,12 @@ const filterExpenses = (state, payload) => {
 };
 
 const removeExpense = (state, id) => {
-  let updatedExpenses = state.expenses.filter(expense => expense.id !== id)
+  let updatedExpenses = state.expenses.filter(expense => expense.id !== id);
 
   return {
     ...state,
     expenses: updatedExpenses
-  }
-}
-
-export default expensesReducer;
-
-// selectors:
-export const getTotal = state => {
-  return state ? state.expenses
-    .filter(expense => new Date(expense.date).getMonth() === state.month)
-    .reduce((acc, expense) => acc + expense.price, 0) : -1;
+  };
 };
 
-export const getFilteredList = state => {
-  let list = []
-
-  return list
-}
+export default expensesReducer;

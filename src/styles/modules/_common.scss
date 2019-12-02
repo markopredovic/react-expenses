@@ -1,3 +1,28 @@
 /* -------------------------------
   modules common:
 --------------------------------- */
+a.is-active-link {
+  color: $brand-dark;
+}
+
+span.active-lang {
+  color: $brand-red-darker;
+}
+
+// text
+.m-bold {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+.m-beige {
+  color: $brand-beige;
+}
+
+span.expense-date {
+}
+span.expense-price {
+  color: $brand-beige;
+}
+span.expense-delete {
+  color: $brand-red;
+}

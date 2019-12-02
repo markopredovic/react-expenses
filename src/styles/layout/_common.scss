@@ -1,3 +1,60 @@
 /* -----------------------------
     common:
 ------------------------------ */
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: "Alatsi", sans-serif;
+  font-size: 16px;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+select {
+  padding: 0 10px;
+  height: 26px;
+  line-height: 26px;
+  background-color: #fff;
+  border: none;
+  border-radius: unset;
+  text-align: left;
+}
+button {
+  padding: 0 20px;
+  height: 30px;
+  line-height: 30px;
+  background-color: $brand-orange;
+  border: none;
+}
+
+.l-app {
+  max-width: 600px;
+  margin: 0 auto;
+  height: 100vh;
+
+  background-color: $brand-blue;
+  color: #fff;
+
+  main {
+    min-height: 70vh;
+    overflow: auto;
+    padding: 0 15px;
+  }
+  footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+}

@@ -26,3 +26,45 @@ export const getLocaleDate = date => {
 
   return localeDate.toLocaleDateString("sr-SR");
 };
+
+export const getMonthName = (locale, month) => {
+  let month_name = null;
+  const months_en = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+
+  const months_rs = [
+    "Januar",
+    "Februar",
+    "Mart",
+    "April",
+    "Maj",
+    "Jun",
+    "Jul",
+    "Avgust",
+    "Septembar",
+    "Oktobar",
+    "Novembar",
+    "Decembar"
+  ];
+
+  if (locale === "en") {
+    month_name = months_en[month];
+  }
+  if (locale === "rs") {
+    month_name = months_rs[month];
+  }
+
+  return month_name;
+};
