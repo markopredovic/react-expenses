@@ -14,14 +14,16 @@ const AddExpenseForm = () => {
       addExpenseValue: "add expense value",
       submit: "add",
       emptyName: "empty expense name",
-      emptyPrice: "empty expense value"
+      emptyPrice: "empty expense value",
+      selectDate: "Date:"
     },
     rs: {
-      addExpenseName: "unesi naziv utroska",
-      addExpenseValue: "unesi potrosenu vrednost",
+      addExpenseName: "naziv utroska",
+      addExpenseValue: "potrosena vrednost",
       submit: "dodaj",
-      emptyName: "prazno ime utroska",
-      emptyPrice: "prazna vrednost utroska"
+      emptyName: "prazan naziv utroska",
+      emptyPrice: "prazna vrednost utroska",
+      selectDate: "Datum:"
     }
   });
 
@@ -88,22 +90,31 @@ const AddExpenseForm = () => {
       <div className="l-add-expense-form">
         <form onSubmit={onSubmitHandler}>
           <div className="l-fields">
-            <input
-              type="text"
-              name="expense"
-              ref={expenseInputNameRef}
-              placeholder={strings.addExpenseName}
-            />
-            {errors && errors.emptyName}
-            <input
-              type="text"
-              name="expense"
-              ref={expenseInputPriceRef}
-              placeholder={strings.addExpenseValue}
-            />
-            {errors && errors.emptyPrice}
+            <div className="l-field">
+              <input
+                type="text"
+                name="expense"
+                ref={expenseInputNameRef}
+                placeholder={strings.addExpenseName}
+              />
+              {errors && (
+                <span className="m-inline-error">{errors.emptyName}</span>
+              )}
+            </div>
+            <div className="l-field">
+              <input
+                type="text"
+                name="expense"
+                ref={expenseInputPriceRef}
+                placeholder={strings.addExpenseValue}
+              />
+              {errors && (
+                <span className="m-inline-error">{errors.emptyPrice}</span>
+              )}
+            </div>
           </div>
-          <div className="l-field">
+          <div className="l-fields">
+            <span style={{ marginRight: "10px" }}>{strings.selectDate}</span>
             <DatePicker
               locale={currentLang === "en" ? "en" : "rs"}
               selected={date}

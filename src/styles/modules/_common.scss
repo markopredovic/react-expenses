@@ -26,3 +26,9 @@ span.expense-price {
 span.expense-delete {
   color: $brand-red;
 }
+
+.m-inline-error {
+  font-size: 1.2rem;
+  color: #fff;
+  background-color: $brand-red;
+}

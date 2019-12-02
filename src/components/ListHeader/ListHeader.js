@@ -20,8 +20,6 @@ const ListHeader = () => {
   });
 
   const context = useContext(ExpensesContext);
-  const [month, setMonth] = useState(null);
-  const [year, setYear] = useState(null);
 
   const makeHeader = (month, year) => {
     let result = null;
@@ -50,7 +48,7 @@ const ListHeader = () => {
       result = strings.formatString(
         strings.expensesForMonthYear,
         <span className="m-bold m-beige">
-          {getMonthName(context.state.lang, month)}
+          {getMonthName(context.state && context.state.lang, month)}
         </span>,
         <span className="m-bold m-beige">{year}</span>
       );
@@ -65,12 +63,17 @@ const ListHeader = () => {
 
   useEffect(() => {
     if (context.state) {
-      setMonth(context.state.month);
-      setYear(context.state.year);
     }
   }, [context.state]);
 
-  return <div className="l-expenses-header">{makeHeader(month, year)}</div>;
+  return (
+    <div className="l-expenses-header">
+      {makeHeader(
+        context.state && context.state.month,
+        context.state && context.state.year
+      )}
+    </div>
+  );
 };
 
 export default ListHeader;
