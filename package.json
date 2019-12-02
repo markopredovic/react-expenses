@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://markopredovic.github.io/react-expenses",
   "dependencies": {
+    "gh-pages": "^2.1.1",
     "node-sass": "^4.13.0",
     "react": "^16.11.0",
     "react-country-flag": "^1.1.0",
