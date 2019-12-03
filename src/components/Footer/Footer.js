@@ -6,7 +6,9 @@ const Footer = () => {
 
   return (
     <footer>
-      <div className="l-content">@markoni-dev</div>
+      <div className="l-content">
+        Developed by <a href="https://markoni-dev.netlify.com">@markoni-dev</a>
+      </div>
     </footer>
   );
 };
