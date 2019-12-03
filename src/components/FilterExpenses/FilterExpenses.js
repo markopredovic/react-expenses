@@ -38,10 +38,6 @@ const FilterExpenses = () => {
 
   const onChangeMonth = e => {};
 
-  const onChangeYear = e => {
-    console.log("[onChangeYear]", selectYearRef.current.value);
-  };
-
   const onSubmitHandler = e => {
     e.preventDefault();
 
@@ -86,11 +82,7 @@ const FilterExpenses = () => {
           </div>
           <div className="l-select">
             <span>{strings.year}:</span>
-            <select
-              name="expenses-year"
-              onChange={onChangeYear}
-              ref={selectYearRef}
-            >
+            <select name="expenses-year" ref={selectYearRef}>
               <option value="-1">{strings.all}</option>
               <option value="2019">2019</option>
               <option value="2020">2020</option>

@@ -8,6 +8,10 @@ body {
   font-family: "Alatsi", sans-serif;
   font-size: 16px;
 }
+input,
+select {
+  font-size: 100%;
+}
 
 *,
 *:before,
@@ -34,6 +38,7 @@ button {
   padding: 0 20px;
   height: 30px;
   line-height: 30px;
+  font-size: 1.6rem;
   background-color: $brand-orange;
   border: none;
 }

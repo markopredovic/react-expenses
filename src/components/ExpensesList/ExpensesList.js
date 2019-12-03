@@ -31,8 +31,8 @@ const ExpensesList = () => {
 
   return (
     <main>
-      <FilterExpenses />
-      <ListHeader />
+      {context.state && <FilterExpenses />}
+      {context.state && <ListHeader />}
       <ul className="l-expenses-list">
         {context.state
           ? filteredList.map((expense, index) => (

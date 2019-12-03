@@ -1,21 +1,19 @@
-import { expenseCompare } from '../helpers/Utility';
+import { expenseCompare } from "../helpers/Utility";
 
 export const getTotal = expenses => {
-  return expenses.reduce((acc, expense) => acc + expense.price, 0)
-}
+  return expenses.reduce((acc, expense) => acc + expense.price, 0);
+};
 
 export const getFilteredList = (expenses, filters) => {
-  const {month, year} = filters
+  const { month, year } = filters;
 
-  if(month === -1 && year === -1) {
+  if (month === -1 && year === -1) {
     return expenses.sort(expenseCompare);
   } else {
     return expenses
       .filter(expense => {
         const _month = new Date(expense.date).getMonth();
         const _year = new Date(expense.date).getFullYear();
-
-        console.log("[SELECTORS]", _month, _year);
 
         if (month === -1) {
           return year === _year;
@@ -27,5 +25,4 @@ export const getFilteredList = (expenses, filters) => {
       })
       .sort(expenseCompare);
   }
-}
-
+};

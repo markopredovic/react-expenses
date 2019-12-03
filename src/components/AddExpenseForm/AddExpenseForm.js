@@ -4,8 +4,15 @@ import "react-datepicker/dist/react-datepicker.css";
 import ExpenseContext from "../../context/ExpensesContext";
 import LocalizedStrings from "react-localization";
 import { registerLocale } from "react-datepicker";
-import rs from "date-fns/locale/sr";
+import rs from "date-fns/locale/sr-Latn";
+import {
+  ToastsContainer,
+  ToastsStore,
+  ToastsContainerPosition
+} from "react-toasts";
 registerLocale("rs", rs);
+
+// TODO: add toast messages
 
 const AddExpenseForm = () => {
   let strings = new LocalizedStrings({
@@ -15,7 +22,8 @@ const AddExpenseForm = () => {
       submit: "add",
       emptyName: "empty expense name",
       emptyPrice: "empty expense value",
-      selectDate: "Date:"
+      selectDate: "Date:",
+      expenseAdded: "Expense added to list"
     },
     rs: {
       addExpenseName: "naziv utroska",
@@ -23,7 +31,8 @@ const AddExpenseForm = () => {
       submit: "dodaj",
       emptyName: "prazan naziv utroska",
       emptyPrice: "prazna vrednost utroska",
-      selectDate: "Datum:"
+      selectDate: "Datum:",
+      expenseAdded: "Utrosak dodat u listu"
     }
   });
 
@@ -33,7 +42,6 @@ const AddExpenseForm = () => {
 
   if (context.state) {
     strings.setLanguage(context.state.lang);
-    console.log("[CURRENT LANG]", strings.getLanguage());
   }
 
   const currentLang = strings.getLanguage();
@@ -51,6 +59,7 @@ const AddExpenseForm = () => {
     if (Object.keys(errors).length === 0) {
       const newExpense = createExpense();
       context.add(newExpense);
+      ToastsStore.success(strings.expenseAdded);
 
       expenseInputNameRef.current.value = "";
       expenseInputPriceRef.current.value = "";
@@ -119,12 +128,17 @@ const AddExpenseForm = () => {
               locale={currentLang === "en" ? "en" : "rs"}
               selected={date}
               onChange={handleChange}
+              dateFormat="MMMM d, yyyy"
             />
           </div>
 
           <button type="submit">{strings.submit}</button>
         </form>
       </div>
+      <ToastsContainer
+        store={ToastsStore}
+        position={ToastsContainerPosition.TOP_RIGHT}
+      />
     </main>
   );
 };

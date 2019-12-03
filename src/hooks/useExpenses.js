@@ -11,8 +11,6 @@ import {
 const useExpenses = api => {
   // useReducer
 
-  console.log("[USE EXPENSES]");
-
   const [state, dispatch] = useReducer(expensesReducer);
 
   useEffect(() => {

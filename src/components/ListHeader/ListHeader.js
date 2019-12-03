@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import ExpensesContext from "../../context/ExpensesContext";
 import LocalizedStrings from "react-localization";
 import { getMonthName } from "../../helpers/Utility";
@@ -60,11 +60,6 @@ const ListHeader = () => {
   if (context.state) {
     strings.setLanguage(context.state.lang);
   }
-
-  useEffect(() => {
-    if (context.state) {
-    }
-  }, [context.state]);
 
   return (
     <div className="l-expenses-header">

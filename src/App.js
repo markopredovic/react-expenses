@@ -37,3 +37,9 @@ function App() {
 }
 
 export default App;
+
+// TODO: APP outline:
+
+//  1. lorem ipsum
+//  2. hello world
+//  3. hello
