@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer>
       <div className="l-content">
-        Developed by <a href="https://markoni-dev.netlify.com">@markoni-dev</a>
+        Developed by <a href="https://markoni.codes">markoni.codes</a>
       </div>
     </footer>
   );
