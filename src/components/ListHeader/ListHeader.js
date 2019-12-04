@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import ExpensesContext from "../../context/ExpensesContext";
 import LocalizedStrings from "react-localization";
 import { getMonthName } from "../../helpers/Utility";
