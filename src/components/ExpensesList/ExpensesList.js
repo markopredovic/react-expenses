@@ -10,9 +10,11 @@ import { Scrollbars } from "react-custom-scrollbars";
 const ExpensesList = () => {
   let strings = new LocalizedStrings({
     en: {
+      emptyList: "There are no entried expenses",
       total: "Total"
     },
     rs: {
+      emptyList: "Nema unetih troskova",
       total: "Ukupno"
     }
   });
@@ -30,26 +32,31 @@ const ExpensesList = () => {
       })
     : [];
 
+  const total = getTotal(filteredList).toFixed(2);
+
   return (
     <main>
       {context.state && <FilterExpenses />}
       {context.state && <ListHeader />}
-      <Scrollbars style={{ height: "310px", marginBottom: "5px" }}>
-        <ul className="l-expenses-list">
-          {context.state
-            ? filteredList.map((expense, index) => (
-                <Expense key={index} expense={expense} />
-              ))
-            : "Loading ..."}
-        </ul>
-      </Scrollbars>
-
-      <div className="l-total">
-        {strings.total}:{" "}
-        <span className="m-bold m-beige">
-          {getTotal(filteredList).toFixed(2)}
-        </span>
+      <div className="l-expenses-wrapper" style={{ marginBottom: "10px" }}>
+        <Scrollbars autoHeight autoHeightMin={10} autoHeightMax={310}>
+          <ul className="l-expenses-list">
+            {context.state
+              ? filteredList.length > 0
+                ? filteredList.map((expense, index) => (
+                    <Expense key={index} expense={expense} />
+                  ))
+                : strings.emptyList
+              : strings.emptyList}
+          </ul>
+        </Scrollbars>
       </div>
+
+      {filteredList.length > 0 && (
+        <div className="l-total">
+          {strings.total}: <span className="m-bold m-beige">{total}</span>
+        </div>
+      )}
     </main>
   );
 };
