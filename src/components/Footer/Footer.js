@@ -1,27 +1,13 @@
-import React, { useContext } from "react";
-import ExpensesContext from "../../context/ExpensesContext";
-import LocalizedStrings from "react-localization";
+import React from "react";
 
 const Footer = () => {
-  let strings = new LocalizedStrings({
-    en: {
-      developedBy: "Developed By"
-    },
-    rs: {
-      developedBy: "Napravio"
-    }
-  });
-
-  const context = useContext(ExpensesContext);
-
-  if (context.state) {
-    strings.setLanguage(context.state.lang);
-  }
-
   return (
     <footer>
-      <div className="l-content">
-        {strings.developedBy} <a href="https://markoni.codes">markoni.codes</a>
+      <div className="fixed-bottom py-2 text-center bg-dark text-white">
+        Developed by{" "}
+        <a href="https://markoni.codes" className="text-warning">
+          markoni.codes
+        </a>
       </div>
     </footer>
   );

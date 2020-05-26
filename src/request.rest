@@ -1,0 +1,20 @@
+GET https://jsonplaceholder.typicode.com/todos/1
+
+###
+POST http://localhost:1337/auth/local
+Content-Type: application/json
+
+{
+"identifier": "markoni",
+"password": "Markoni22"
+}
+
+###
+POST http://localhost:1337/auth/local/register
+Content-Type: application/json
+
+{
+"username": "markoni",
+"email": "hello@hello.com",
+"password": "Markoni22"
+}
