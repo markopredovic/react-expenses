@@ -2,24 +2,18 @@
   "name": "react-expenses",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://markopredovic.github.io/react-expenses",
   "dependencies": {
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
-    "gh-pages": "^2.1.1",
     "node-sass": "^4.13.0",
     "react": "^16.11.0",
     "react-bootstrap": "^1.0.1",
-    "react-country-flag": "^1.1.0",
     "react-custom-scrollbars": "^4.2.1",
-    "react-datepicker": "^2.10.0",
     "react-dom": "^16.11.0",
     "react-icons": "^3.8.0",
-    "react-localization": "^1.0.15",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
-    "react-toasts": "^3.0.6",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0"
@@ -28,8 +22,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"

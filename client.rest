@@ -1,5 +1,0 @@
-GET http://localhost:1337/expenses
-
-Content-Type: application/json
-
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTkwMjk1NjQ2LCJleHAiOjE1OTI4ODc2NDZ9.PVmTvirZfHktrgAWodWbs0GxcVN8TTGRhsgSVT0pI4M
