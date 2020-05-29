@@ -17,3 +17,7 @@ Manage expenses. User authentication through Strapi CMS, using jwt
 ### 3rd-party react plugins:
 
 1. https://github.com/malte-wessel/react-custom-scrollbars
+
+### Demo
+
+[demo](https://markoni-expenses.netlify.app/)
