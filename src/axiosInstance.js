@@ -7,13 +7,15 @@ const axiosInstance = axios.create({
   timeout: 1000,
 });
 
-const addAuthorizationHeader = () => {
+const addAuthorizationHeader = (method) => {
+  console.log("method", method);
   // set headers
   const token = store.getState().token;
+  console.log("token", token);
 
   axiosInstance.interceptors.request.use(
     function (config) {
-      if (token) {
+      if (!!token) {
         config.headers = {
           ...config.headers,
           Authorization: `Bearer ${token}`,

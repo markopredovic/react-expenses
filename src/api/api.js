@@ -3,22 +3,25 @@ import axiosInstance, { addAuthorizationHeader } from "../axiosInstance";
 const api = {
   login: async (credentials) => {
     try {
+      addAuthorizationHeader("login");
       const res = await axiosInstance.post("/auth/local", credentials);
       return res.data;
     } catch (e) {
       throw new Error(e.message);
     }
   },
-  register: (data) => {
+  register: async (data) => {
     try {
-      return axiosInstance.post("/auth/local/register", data);
+      addAuthorizationHeader("register");
+      const res = await axiosInstance.post("/auth/local/register", data);
+      return res.data;
     } catch (e) {
       throw new Error(e.message);
     }
   },
   getExpenses: async () => {
     try {
-      addAuthorizationHeader();
+      addAuthorizationHeader("getExpenses");
       const res = await axiosInstance.get("/expenses");
       return res.data;
     } catch (e) {
@@ -27,7 +30,7 @@ const api = {
   },
   addExpense: (data) => {
     try {
-      addAuthorizationHeader();
+      addAuthorizationHeader("addExpense");
       return axiosInstance.post("/expenses", data);
     } catch (e) {
       throw new Error(e.message);

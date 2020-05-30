@@ -61,10 +61,12 @@ const expenseDeleted = (id) => {
   };
 };
 
-const register = (data) => {
+const register = (credentials) => {
   return async (dispatch) => {
     try {
-      await api.register(data);
+      const data = await api.register(credentials);
+      console.log("data", data);
+      dispatch(userLoggedIn(data));
     } catch (e) {
       throw new Error(e.response.data.message[0].messages[0].message);
     }

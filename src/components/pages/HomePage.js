@@ -8,7 +8,8 @@ const HomePage = () => {
       <PageTitle title="Expense management app" />
       <div>
         <p className="mb-4">
-          This is simple React js + Redux expense management application.
+          This is simple React js + Redux expense management application. <br />
+          Login with: test/test to try
         </p>
         <h3>Use cases:</h3>
         <ul>

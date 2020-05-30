@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import { useForm } from "../../hooks/useForm";
 import { register } from "../../actions";
@@ -13,6 +14,7 @@ const initialData = {
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [errors, setErrors] = useState({});
 
@@ -22,6 +24,7 @@ const SignUpForm = () => {
     e.preventDefault();
     try {
       await dispatch(register(data));
+      history.push("/expenses/new");
     } catch (e) {
       setErrors({ register: e.toString().replace("Error: ", "") });
     }
